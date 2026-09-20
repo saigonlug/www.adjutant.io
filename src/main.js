@@ -52,71 +52,56 @@ function initializeReadingProgress() {
   update();
 }
 
-function initializeBrandDock() {
-  const slot = document.querySelector('.hero-brand');
-  const brand = slot?.querySelector('.brand-link');
-  const header = document.querySelector('.site-header');
-  if (!brand || !header) return;
+function initializeCaseBrowser() {
+  const work = document.querySelector('#work');
+  const details = [...document.querySelectorAll('[data-case-detail]')];
+  const triggers = [...document.querySelectorAll('[data-case-open]')];
+  if (!work || !details.length || !triggers.length) return;
 
-  // Move the original node, never clone the owner's mark. The empty slot keeps
-  // the hero stable, and the header supplies the correct stacking/tab order.
-  header.prepend(brand);
-  brand.classList.add('is-floating');
-  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-  let geometry;
-  let framePending = false;
+  document.body.classList.add('case-browser-ready');
+  const linkedDetail = details.find((detail) => `#${detail.id}` === window.location.hash);
+  let activeId = linkedDetail?.id ?? null;
 
-  function update() {
-    const { left, top, width, targetLeft, targetTop, targetWidth, distance } = geometry;
-    const scroll = Math.max(0, window.scrollY);
-    const progress = Math.min(1, scroll / distance);
-    const amount = reducedMotion.matches ? Number(progress === 1) : progress;
-    const scale = 1 + (targetWidth / width - 1) * amount;
-    const x = left + (targetLeft - left) * amount;
-    const y =
-      reducedMotion.matches && progress < 1 ? top - scroll : top + (targetTop - top) * progress;
-    brand.style.transform = `translate3d(${x}px, ${y}px, 0) scale(${scale})`;
-    framePending = false;
+  function renderCase() {
+    const active = details.find((detail) => detail.id === activeId);
+    work.classList.toggle('case-is-open', Boolean(active));
+    details.forEach((detail) => {
+      detail.hidden = detail !== active;
+    });
+    triggers.forEach((trigger) => {
+      const selected = active?.id === trigger.dataset.caseOpen;
+      const heading = trigger.querySelector('h3').innerText.replace(/\s+/g, ' ').trim();
+      const label = trigger.querySelector('[data-case-trigger-label]');
+      trigger.setAttribute('role', 'button');
+      trigger.tabIndex = 0;
+      trigger.setAttribute('aria-expanded', String(selected));
+      trigger.setAttribute('aria-controls', trigger.dataset.caseOpen);
+      trigger.setAttribute(
+        'aria-label',
+        `${selected ? 'Hide details' : 'See what happened'}: ${heading}`,
+      );
+      label.textContent = selected ? 'Hide what happened' : 'See what happened';
+    });
+    window.dispatchEvent(new Event('resize'));
   }
 
-  function measure() {
-    const origin = slot.getBoundingClientRect();
-    const nav = header.querySelector('nav').getBoundingClientRect();
-    const targetLeft = parseFloat(getComputedStyle(header).paddingLeft);
-    const targetWidth = Math.min(window.innerWidth <= 760 ? 140 : 180, nav.left - targetLeft - 24);
-    const targetTop = (header.offsetHeight - (targetWidth * 810) / 3362) / 2;
-    const top = origin.top + window.scrollY;
-    geometry = {
-      left: origin.left,
-      top,
-      width: origin.width,
-      targetLeft,
-      targetTop,
-      targetWidth,
-      distance: Math.max(1, top - targetTop),
-    };
-    brand.style.width = `${origin.width}px`;
-    update();
+  function toggleCase(trigger) {
+    activeId = activeId === trigger.dataset.caseOpen ? null : trigger.dataset.caseOpen;
+    renderCase();
   }
 
-  function schedule() {
-    if (framePending) return;
-    framePending = true;
-    window.requestAnimationFrame(update);
-  }
-
-  measure();
-  window.addEventListener('scroll', schedule, { passive: true });
-  window.addEventListener('resize', measure);
-  window.addEventListener('pageshow', measure);
-  reducedMotion.addEventListener('change', schedule);
-  const observer = new ResizeObserver(measure);
-  observer.observe(slot);
-  observer.observe(header);
-  document.fonts.ready.then(measure);
+  triggers.forEach((trigger) => {
+    trigger.addEventListener('click', () => toggleCase(trigger));
+    trigger.addEventListener('keydown', (event) => {
+      if (event.key !== 'Enter' && event.key !== ' ') return;
+      event.preventDefault();
+      toggleCase(trigger);
+    });
+  });
+  renderCase();
 }
 
 drawDataFlow();
 initializeReadingProgress();
-initializeBrandDock();
+initializeCaseBrowser();
 document.querySelector('#year').textContent = String(new Date().getFullYear());
