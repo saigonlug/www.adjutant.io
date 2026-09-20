@@ -1,8 +1,0 @@
-markdown: kramdown
-highlighter: pygments
-relative_permalinks: false
-permalink: /news/:year/:month/:day/:title/
-excerpt_separator: noifniof3nioaniof3nioafafinoafnoif
-repository: http://adjutant.io
-help_url: http://adjutant.io
-timezone: America/Los_Angeles
