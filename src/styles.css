@@ -1157,8 +1157,11 @@ figcaption {
     margin-bottom: 54px;
   }
   .case-card {
-    min-height: 410px;
-    padding: 28px 24px;
+    min-height: 0;
+    padding: 26px 24px 22px;
+  }
+  .case-card .eyebrow {
+    letter-spacing: 0.05em;
   }
   .case-card + .case-card {
     border-left: 0;
@@ -1166,11 +1169,15 @@ figcaption {
   }
   .case-card h3 {
     min-height: 0;
-    margin-block: 26px 18px;
-    font-size: 27px;
+    margin-block: 22px 14px;
+    font-size: 26px;
   }
   .case-card > p:not(.eyebrow) {
-    margin-bottom: 40px;
+    margin-bottom: 26px;
+  }
+  .case-browser-ready .case-trigger {
+    min-height: 48px;
+    padding-top: 16px;
   }
   .case-study {
     grid-template-columns: 1fr;
@@ -1265,7 +1272,7 @@ figcaption {
     gap: 10px;
   }
   .hero .text-link {
-    font-size: 12px;
+    font-size: 16px;
   }
   .button {
     gap: 22px;
@@ -1356,12 +1363,38 @@ figcaption,
   .case-visual figcaption {
     flex-wrap: wrap;
   }
+  .case-visual figcaption span:last-child {
+    margin-left: auto;
+    text-align: right;
+  }
   .workflow-row span,
   .lane-node {
     font-size: 11px;
   }
   .process p {
     font-size: 17px;
+  }
+}
+
+@media (max-width: 600px) {
+  .process {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    margin-top: 36px;
+  }
+  .process li {
+    padding-top: 22px;
+  }
+  .process h3 {
+    margin: 14px 0 8px;
+  }
+  .process p {
+    max-width: none;
+  }
+  .contact .eyebrow {
+    font-size: 13px;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
   }
 }
 
