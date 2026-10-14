@@ -88,7 +88,27 @@ function initializeCaseBrowser() {
   function toggleCase(trigger) {
     activeId = activeId === trigger.dataset.caseOpen ? null : trigger.dataset.caseOpen;
     renderCase();
+    history.replaceState(null, '', activeId ? `#${activeId}` : '#work');
+    if (activeId) revealActiveCase();
   }
+
+  function revealActiveCase() {
+    const active = details.find((detail) => detail.id === activeId);
+    if (!active) return;
+    requestAnimationFrame(() => {
+      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      active.scrollIntoView({ behavior: reducedMotion ? 'instant' : 'smooth', block: 'start' });
+      active.querySelector('h3')?.focus({ preventScroll: true });
+    });
+  }
+
+  window.addEventListener('hashchange', () => {
+    const linked = details.find((detail) => `#${detail.id}` === location.hash);
+    if (!linked && location.hash !== '#work') return;
+    activeId = linked?.id ?? null;
+    renderCase();
+    if (linked) revealActiveCase();
+  });
 
   triggers.forEach((trigger) => {
     trigger.addEventListener('click', () => toggleCase(trigger));
