@@ -52,76 +52,133 @@ function initializeReadingProgress() {
   update();
 }
 
+function initializePageLayout() {
+  const root = document.documentElement;
+  const header = document.querySelector('.site-header');
+  const work = document.querySelector('#work');
+  const browser = work?.querySelector('.case-browser');
+  if (!header) return;
+  let framePending = false;
+
+  function update() {
+    root.style.setProperty('--site-header-height', `${header.getBoundingClientRect().height}px`);
+    if (work && browser) {
+      const bannerHeight = browser.getBoundingClientRect().top - work.getBoundingClientRect().top;
+      root.style.setProperty('--case-banner-height', `${bannerHeight}px`);
+    }
+    framePending = false;
+  }
+
+  function schedule() {
+    if (framePending) return;
+    framePending = true;
+    requestAnimationFrame(update);
+  }
+
+  if ('ResizeObserver' in window) {
+    const observer = new ResizeObserver(schedule);
+    [header, work?.querySelector('.section-marker'), work?.querySelector('.case-introduction')]
+      .filter(Boolean)
+      .forEach((element) => observer.observe(element));
+  }
+  window.addEventListener('resize', schedule);
+  document.fonts?.ready.then(schedule);
+  update();
+}
+
 function initializeCaseBrowser() {
   const work = document.querySelector('#work');
+  const browser = work?.querySelector('.case-browser');
+  const tabList = work?.querySelector('.case-tabs');
   const details = [...document.querySelectorAll('[data-case-detail]')];
-  const triggers = [...document.querySelectorAll('[data-case-open]')];
-  if (!work || !details.length || !triggers.length) return;
+  const tabs = [...document.querySelectorAll('[data-case-open]')];
+  if (!browser || !tabList || !details.length || !tabs.length) return;
 
   document.body.classList.add('case-browser-ready');
-  const linkedDetail = details.find((detail) => `#${detail.id}` === window.location.hash);
-  let activeId = linkedDetail?.id ?? null;
+  tabList.setAttribute('role', 'tablist');
+  const mobile = window.matchMedia('(max-width: 760px)');
+  const linkedDetail = details.find((detail) => `#${detail.id}` === location.hash);
+  let activeId = linkedDetail?.id ?? details[0].id;
+
+  function updateOrientation() {
+    tabList.setAttribute('aria-orientation', mobile.matches ? 'horizontal' : 'vertical');
+  }
 
   function renderCase() {
-    const active = details.find((detail) => detail.id === activeId);
-    work.classList.toggle('case-is-open', Boolean(active));
     details.forEach((detail) => {
-      detail.hidden = detail !== active;
+      detail.hidden = detail.id !== activeId;
+      detail.setAttribute('role', 'tabpanel');
+      detail.setAttribute('aria-labelledby', tabs.find((tab) => tab.dataset.caseOpen === detail.id).id);
     });
-    triggers.forEach((trigger) => {
-      const selected = active?.id === trigger.dataset.caseOpen;
-      const heading = trigger.querySelector('h3').innerText.replace(/\s+/g, ' ').trim();
-      const label = trigger.querySelector('[data-case-trigger-label]');
-      trigger.setAttribute('role', 'button');
-      trigger.tabIndex = 0;
-      trigger.setAttribute('aria-expanded', String(selected));
-      trigger.setAttribute('aria-controls', trigger.dataset.caseOpen);
-      trigger.setAttribute(
-        'aria-label',
-        `${selected ? 'Hide details' : 'See what happened'}: ${heading}`,
-      );
-      label.textContent = selected ? 'Hide what happened' : 'See what happened';
+    tabs.forEach((tab) => {
+      const selected = tab.dataset.caseOpen === activeId;
+      tab.setAttribute('role', 'tab');
+      tab.setAttribute('aria-selected', String(selected));
+      tab.setAttribute('aria-controls', tab.dataset.caseOpen);
+      tab.tabIndex = selected ? 0 : -1;
     });
     window.dispatchEvent(new Event('resize'));
   }
 
-  function toggleCase(trigger) {
-    activeId = activeId === trigger.dataset.caseOpen ? null : trigger.dataset.caseOpen;
-    renderCase();
-    history.replaceState(null, '', activeId ? `#${activeId}` : '#work');
-    if (activeId) revealActiveCase();
-  }
-
-  function revealActiveCase() {
+  function revealActiveCase(focusHeading = false) {
     const active = details.find((detail) => detail.id === activeId);
     if (!active) return;
     requestAnimationFrame(() => {
       const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      active.scrollIntoView({ behavior: reducedMotion ? 'instant' : 'smooth', block: 'start' });
-      active.querySelector('h3')?.focus({ preventScroll: true });
+      const fullScreenCases = window.matchMedia('(min-width: 1200px) and (min-height: 850px)').matches;
+      const target = fullScreenCases ? work : browser;
+      target.scrollIntoView({ behavior: reducedMotion ? 'instant' : 'smooth', block: 'start' });
+      if (focusHeading) active.querySelector('h3')?.focus({ preventScroll: true });
     });
   }
 
-  window.addEventListener('hashchange', () => {
-    const linked = details.find((detail) => `#${detail.id}` === location.hash);
-    if (!linked && location.hash !== '#work') return;
-    activeId = linked?.id ?? null;
+  function selectCase(tab) {
+    if (activeId === tab.dataset.caseOpen) return;
+    activeId = tab.dataset.caseOpen;
     renderCase();
-    if (linked) revealActiveCase();
-  });
+    history.replaceState(null, '', `#${activeId}`);
+    revealActiveCase();
+  }
 
-  triggers.forEach((trigger) => {
-    trigger.addEventListener('click', () => toggleCase(trigger));
-    trigger.addEventListener('keydown', (event) => {
-      if (event.key !== 'Enter' && event.key !== ' ') return;
+  tabs.forEach((tab, index) => {
+    tab.addEventListener('click', (event) => {
       event.preventDefault();
-      toggleCase(trigger);
+      selectCase(tab);
+    });
+    tab.addEventListener('keydown', (event) => {
+      const previous = mobile.matches ? 'ArrowLeft' : 'ArrowUp';
+      const next = mobile.matches ? 'ArrowRight' : 'ArrowDown';
+      let target;
+      if (event.key === previous) target = tabs[(index + tabs.length - 1) % tabs.length];
+      if (event.key === next) target = tabs[(index + 1) % tabs.length];
+      if (event.key === 'Home') target = tabs[0];
+      if (event.key === 'End') target = tabs[tabs.length - 1];
+      if (target) {
+        event.preventDefault();
+        target.focus({ preventScroll: true });
+        selectCase(target);
+      } else if (event.key === ' ') {
+        event.preventDefault();
+        selectCase(tab);
+      }
     });
   });
+
+  window.addEventListener('hashchange', () => {
+    const linked = details.find((detail) => `#${detail.id}` === location.hash);
+    if (!linked) return;
+    activeId = linked.id;
+    renderCase();
+    revealActiveCase(true);
+  });
+  mobile.addEventListener('change', updateOrientation);
+  updateOrientation();
   renderCase();
+  if (linkedDetail) revealActiveCase();
 }
 
 drawDataFlow();
 initializeReadingProgress();
 initializeCaseBrowser();
+initializePageLayout();
 document.querySelector('#year').textContent = String(new Date().getFullYear());

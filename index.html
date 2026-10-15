@@ -18,8 +18,8 @@
       content="We help you check the work, make the foundation solid, and build a team that can own it."
     />
     <link rel="icon" href="./brand/adjutant-original.png" type="image/png" />
-    <link rel="stylesheet" href="./src/styles.css?v=20261014-case-studies" />
-    <script defer src="./src/main.js?v=20261014-case-studies"></script>
+    <link rel="stylesheet" href="./src/styles.css?v=20261015-page-sections" />
+    <script defer src="./src/main.js?v=20261015-page-sections"></script>
   </head>
   <body id="top">
     <a class="skip-link" href="#main">Skip to content</a>
@@ -48,7 +48,7 @@
     </header>
     <div class="reading-progress" aria-hidden="true"></div>
     <main id="main">
-      <section class="hero" aria-labelledby="hero-heading">
+      <section class="hero page-section" aria-labelledby="hero-heading">
         <div class="hero-art" aria-hidden="true">
           <svg id="flow-art" viewBox="0 0 900 650" fill="none">
             <defs>
@@ -72,7 +72,7 @@
           <h1 id="hero-heading">AI built it.<br />Who checked it?</h1>
           <p class="hero-description">
             <span>AI can build a convincing system fast.</span>
-            <span>We help you check the work, make the foundation solid, and build a team that can own it.</span>
+            <span>We help you check the work, make the foundation solid, and build a team that can own it. No one-size-fits-all playbook.</span>
           </p>
           <div class="hero-actions">
             <a
@@ -90,224 +90,235 @@
       </section>
 
       <!-- Selected case studies: start -->
-      <section class="work section-shell" id="work" aria-labelledby="work-heading">
+      <section class="work section-shell page-section" id="work" aria-labelledby="work-heading">
         <div class="section-marker">
           <span class="eyebrow"><span class="signal-dash"></span>01 / Some horror stories</span>
         </div>
-        <div class="case-overview">
-          <p class="case-introduction" id="work-heading">
-            <span>From our consultants’ experience. Client identities kept private.</span>
-            <span>These are the norm, not the exception. Businesses grow fast. Decisions made under pressure can haunt them for decades. <strong>We’re here to help.</strong></span>
-          </p>
-          <div class="case-index" aria-label="Case studies">
-            <article class="case-card" data-case-open="case-01">
-              <p class="eyebrow">Case 01 <span>/</span> Lending platform</p>
-              <h3>The Inflection Point</h3>
-              <div class="case-preview" aria-hidden="true">
-                <img src="./illustrations/case-01.svg?v=c3e5502227c4" width="1600" height="680" alt="" loading="lazy" decoding="async" />
+        <p class="case-introduction" id="work-heading">
+          <span>Businesses grow fast. Decisions made under pressure can cause troubles for a long time. <strong>We’re here to help.</strong></span>
+        </p>
+        <div class="case-browser">
+          <nav class="case-tabs" aria-label="Case studies">
+            <a class="case-tab" id="case-tab-01" href="#case-01" data-case-open="case-01">
+              <span class="eyebrow">Case 01 / Lending</span>
+              <span class="case-tab-title">Inflection Point</span>
+            </a>
+            <a class="case-tab" id="case-tab-02" href="#case-02" data-case-open="case-02">
+              <span class="eyebrow">Case 02 / Insurance</span>
+              <span class="case-tab-title">Mediocrity Trap</span>
+            </a>
+            <a class="case-tab" id="case-tab-03" href="#case-03" data-case-open="case-03">
+              <span class="eyebrow">Case 03 / Logistics</span>
+              <span class="case-tab-title">Eroding Trust</span>
+            </a>
+          </nav>
+          <div class="case-detail-region" aria-live="polite">
+            <article class="case-study case-story" id="case-01" data-case-detail aria-labelledby="case-title-01">
+              <div class="case-story-scene">
+                <div class="case-story-heading">
+                  <div class="case-copy">
+                    <p class="eyebrow">Case 01 <span>/</span> Lending platform</p>
+                    <h3 id="case-title-01" tabindex="-1">Growth was heading toward a breaking point.</h3>
+                  </div>
+                  <div class="case-story-context">
+                    <p>A lending platform used by major banks, moving US$ Billions in transaction annually while accumulating corrupted financial records.</p>
+                  </div>
+                </div>
+                <figure class="case-illustration">
+                  <img src="./illustrations/case-01.svg?v=93fde67870f0" width="1600" height="780" alt="A lending platform for banks grows toward an intervention point. Continued growth follows the intervention; a dashed counterfactual trajectory drops toward projected collapse." loading="lazy" decoding="async" />
+                  <figcaption>
+                    <span>The growth risk, and the intervention that changed its trajectory.</span>
+                  </figcaption>
+                </figure>
               </div>
-              <p>A lending platform moved billions while corrupted financial records accumulated.</p>
-              <div class="case-trigger">
-                <span data-case-trigger-label>See what happened</span><span aria-hidden="true">↓</span>
+              <div class="case-story-result">
+                <div class="case-contribution">
+                  <p class="eyebrow"><span class="signal-dash"></span> What our consultant helped change</p>
+                  <div class="case-contribution-grid">
+                      <div>
+                        <h4>Plan the core migration</h4>
+                        <p>Core 1 → Core 2. Reconcile records and move clients in stages.</p>
+                      </div>
+                      <div>
+                        <h4>Restore financial controls</h4>
+                        <p>Enforce data rules and establish structured, trustworthy records.</p>
+                      </div>
+                      <div>
+                        <h4>Build the team to own it</h4>
+                        <p>Build product and tech ownership of the core and its ongoing development.</p>
+                      </div>
+                  </div>
+                </div>
+                <div class="case-story-outcome">
+                  <p class="eyebrow">What this enabled</p>
+                  <h4>Clean records. Clear decisions.</h4>
+                  <p>Structured financial data, compliance rules, and team ownership support reliable insight.</p>
+                </div>
+                <nav class="case-story-navigation" aria-label="Case study navigation">
+                  <a href="#work">Back to the case studies <span aria-hidden="true">↑</span></a>
+                  <a href="#case-02">Next: Insurance platforms <span aria-hidden="true">→</span></a>
+                </nav>
               </div>
             </article>
-            <article class="case-card" data-case-open="case-02">
-              <p class="eyebrow">Case 02 <span>/</span> Insurance platforms</p>
-              <h3>The Mediocrity Trap</h3>
-              <div class="case-preview" aria-hidden="true">
-                <img src="./illustrations/case-02.svg?v=77c88c67cbb6" width="1600" height="780" alt="" loading="lazy" decoding="async" />
+
+            <article class="case-study case-story" id="case-02" data-case-detail aria-labelledby="case-title-02">
+              <div class="case-story-scene">
+                <div class="case-story-heading">
+                  <div class="case-copy">
+                    <p class="eyebrow">Case 02 <span>/</span> Insurance platforms</p>
+                    <h3 id="case-title-02" tabindex="-1">Each new sale came with ANOTHER complete rebuild.</h3>
+                  </div>
+                  <div class="case-story-context">
+                    <p>Two enterprise clients already meant two separate platforms.</p>
+                    <p>Every new sale brought another costly build and a permanent maintenance obligation.</p>
+                  </div>
+                </div>
+                <figure class="case-illustration">
+                  <img src="./illustrations/case-02.svg?v=09400c69bd70" width="1600" height="780" alt="An airship represents the insurance product. Revenue provides lift while three client-specific platform obligations hang beneath it as ballast; the third is a projected next sale." loading="lazy" decoding="async" />
+                  <figcaption>
+                    <span>New clients should lift the business. Separate rebuilds add lasting weight.</span>
+                  </figcaption>
+                </figure>
               </div>
-              <p>Two enterprise clients already meant two separate platforms.</p>
-              <div class="case-trigger">
-                <span data-case-trigger-label>See what happened</span><span aria-hidden="true">↓</span>
+              <div class="case-story-result">
+                <div class="case-contribution">
+                  <p class="eyebrow"><span class="signal-dash"></span> What our consultant helped change</p>
+                  <div class="case-contribution-grid">
+                      <div>
+                        <h4>Rebuild the team</h4>
+                        <p>Hire strong engineers and align product with engineering.</p>
+                      </div>
+                      <div>
+                        <h4>Consolidate the product</h4>
+                        <p>Build one reusable platform and unify data for future clients.</p>
+                      </div>
+                      <div>
+                        <h4>Keep existing clients live</h4>
+                        <p>Preserve two-way compatibility between the shared product and existing platforms.</p>
+                      </div>
+                  </div>
+                </div>
+                <div class="case-story-outcome">
+                  <p class="eyebrow">What this enabled</p>
+                  <h4>Future sales add clients to one reusable product.</h4>
+                  <p>A path to scalable onboarding and comparable insight, with existing clients kept operating.</p>
+                </div>
+                <nav class="case-story-navigation" aria-label="Case study navigation">
+                  <a href="#work">Back to the case studies <span aria-hidden="true">↑</span></a>
+                  <a href="#case-03">Next: Logistics platform <span aria-hidden="true">→</span></a>
+                </nav>
               </div>
             </article>
-            <article class="case-card" data-case-open="case-03">
-              <p class="eyebrow">Case 03 <span>/</span> Logistics platform</p>
-              <h3>Growth and eroding trust</h3>
-              <div class="case-preview" aria-hidden="true">
-                <img src="./illustrations/case-03.svg?v=97be455042d0" width="1600" height="880" alt="" loading="lazy" decoding="async" />
+
+            <article class="case-study case-story" id="case-03" data-case-detail aria-labelledby="case-title-03">
+              <div class="case-story-scene">
+                <div class="case-story-heading">
+                  <div class="case-copy">
+                    <p class="eyebrow">Case 03 <span>/</span> Logistics platform</p>
+                    <h3 id="case-title-03" tabindex="-1">Positive cash flow could absorb the cost of outages. Eroded customer trust was harder to repair.</h3>
+                  </div>
+                  <div class="case-story-context">
+                    <p>Revenue doubled each year, but the system crashed roughly every two weeks.</p>
+                    <p>Operations absorbed the disruption; reporting relied on manual extracts and Excel.</p>
+                  </div>
+                </div>
+                <figure class="case-illustration">
+                  <img src="./illustrations/case-03.svg?v=36b0872bb04b" width="1600" height="880" alt="A crane lifts a red container onto a growing stack. A breaking wave erodes the ground; the bottom-right container falls and the bottom-middle container starts detaching." loading="lazy" decoding="async" />
+                  <figcaption>
+                    <span>Growth continued above. Recurring outages were eroding the foundations below.</span>
+                  </figcaption>
+                </figure>
               </div>
-              <p>Revenue doubled each year, but the system crashed roughly every two weeks.</p>
-              <div class="case-trigger">
-                <span data-case-trigger-label>See what happened</span><span aria-hidden="true">↓</span>
+              <div class="case-story-result">
+                <div class="case-contribution">
+                  <p class="eyebrow"><span class="signal-dash"></span> What our consultant helped change</p>
+                  <div class="case-contribution-grid">
+                      <div>
+                        <h4>Plan focused services</h4>
+                        <p>Separate driver, customer, admin, fleet, and warehouse responsibilities.</p>
+                      </div>
+                      <div>
+                        <h4>Build the data platform</h4>
+                        <p>Data lake → warehouse → real-time analytics, separate from the operational system.</p>
+                      </div>
+                      <div>
+                        <h4>Replace manual reporting</h4>
+                        <p>Connect current operational data for accurate, timely business insight.</p>
+                      </div>
+                  </div>
+                </div>
+                <div class="case-story-outcome">
+                  <p class="eyebrow">What this enabled</p>
+                  <h4>More dependable operations. Live business insight.</h4>
+                  <p>Contain disruption, improve service, and support informed decisions as the business grows.</p>
+                </div>
+                <nav class="case-story-navigation" aria-label="Case study navigation">
+                  <a href="#work">Back to the case studies <span aria-hidden="true">↑</span></a>
+                  <a href="#case-01">Next: Lending platform <span aria-hidden="true">→</span></a>
+                </nav>
               </div>
             </article>
           </div>
-        </div>
-        <div class="case-detail-region" aria-live="polite">
-          <article class="case-study case-story" id="case-01" data-case-detail aria-labelledby="case-title-01">
-            <div class="case-story-heading">
-              <div class="case-copy">
-                <p class="eyebrow">Case 01 <span>/</span> Lending platform</p>
-                <h3 id="case-title-01" tabindex="-1">Growth was heading toward a breaking point.</h3>
-              </div>
-              <div class="case-story-context">
-                <p>A lending platform moved billions while corrupted financial records accumulated.</p>
-                <p>VC funding kept it running; new releases broke features already in production.</p>
-              </div>
-            </div>
-            <figure class="case-illustration">
-              <a class="case-artwork-link" href="./illustrations/case-01-story.svg?v=a53daf753731" target="_blank" rel="noopener noreferrer" aria-label="Open the complete Case 01 illustration in a new tab">
-                <img src="./illustrations/case-01.svg?v=c3e5502227c4" width="1600" height="680" alt="A lending business grows toward an intervention point. Continued growth follows the intervention; a dashed counterfactual trajectory drops toward projected collapse." loading="lazy" decoding="async" />
-              </a>
-              <figcaption>
-                <span>The growth risk, and the intervention that changed its trajectory.</span>
-                <a href="./illustrations/case-01-story.svg?v=a53daf753731" target="_blank" rel="noopener noreferrer" aria-label="View the full-size Case 01 story in a new tab">View full-size story <span aria-hidden="true">↗</span></a>
-              </figcaption>
-            </figure>
-            <div class="case-contribution">
-              <p class="eyebrow"><span class="signal-dash"></span> What our consultant helped change</p>
-              <div class="case-contribution-grid">
-                  <div>
-                    <h4>Plan the core migration</h4>
-                    <p>Core 1 → Core 2. Reconcile records and move clients in stages.</p>
-                  </div>
-                  <div>
-                    <h4>Restore financial controls</h4>
-                    <p>Enforce data rules and establish structured, trustworthy records.</p>
-                  </div>
-                  <div>
-                    <h4>Build the team to own it</h4>
-                    <p>Build product and tech ownership of the core and its ongoing development.</p>
-                  </div>
-              </div>
-            </div>
-            <div class="case-story-outcome">
-              <p class="eyebrow">What this enabled</p>
-              <h4>Clean records. Clear decisions.</h4>
-              <p>Structured financial data, compliance rules, and team ownership support reliable insight.</p>
-            </div>
-            <nav class="case-story-navigation" aria-label="Case study navigation">
-              <a href="#work">Back to the case studies <span aria-hidden="true">↑</span></a>
-              <a href="#case-02">Next: Insurance platforms <span aria-hidden="true">→</span></a>
-            </nav>
-          </article>
-
-          <article class="case-study case-story" id="case-02" data-case-detail aria-labelledby="case-title-02">
-            <div class="case-story-heading">
-              <div class="case-copy">
-                <p class="eyebrow">Case 02 <span>/</span> Insurance platforms</p>
-                <h3 id="case-title-02" tabindex="-1">Each new sale came with ANOTHER complete rebuild.</h3>
-              </div>
-              <div class="case-story-context">
-                <p>Two enterprise clients already meant two separate platforms.</p>
-                <p>Every new sale brought another costly build and a permanent maintenance obligation.</p>
-              </div>
-            </div>
-            <figure class="case-illustration">
-              <a class="case-artwork-link" href="./illustrations/case-02-story.svg?v=db10838136ba" target="_blank" rel="noopener noreferrer" aria-label="Open the complete Case 02 illustration in a new tab">
-                <img src="./illustrations/case-02.svg?v=77c88c67cbb6" width="1600" height="780" alt="An airship represents the insurance product. Revenue provides lift while three client-specific platform obligations hang beneath it as ballast; the third is a projected next sale." loading="lazy" decoding="async" />
-              </a>
-              <figcaption>
-                <span>New clients should lift the business. Separate rebuilds add lasting weight.</span>
-                <a href="./illustrations/case-02-story.svg?v=db10838136ba" target="_blank" rel="noopener noreferrer" aria-label="View the full-size Case 02 story in a new tab">View full-size story <span aria-hidden="true">↗</span></a>
-              </figcaption>
-            </figure>
-            <div class="case-contribution">
-              <p class="eyebrow"><span class="signal-dash"></span> What our consultant helped change</p>
-              <div class="case-contribution-grid">
-                  <div>
-                    <h4>Rebuild the team</h4>
-                    <p>Hire strong engineers and align product with engineering.</p>
-                  </div>
-                  <div>
-                    <h4>Consolidate the product</h4>
-                    <p>Build one reusable platform and unify data for future clients.</p>
-                  </div>
-                  <div>
-                    <h4>Keep existing clients live</h4>
-                    <p>Preserve two-way compatibility between the shared product and existing platforms.</p>
-                  </div>
-              </div>
-            </div>
-            <div class="case-story-outcome">
-              <p class="eyebrow">What this enabled</p>
-              <h4>Future sales add clients to one reusable product.</h4>
-              <p>A path to scalable onboarding and comparable insight, with existing clients kept operating.</p>
-            </div>
-            <nav class="case-story-navigation" aria-label="Case study navigation">
-              <a href="#work">Back to the case studies <span aria-hidden="true">↑</span></a>
-              <a href="#case-03">Next: Logistics platform <span aria-hidden="true">→</span></a>
-            </nav>
-          </article>
-
-          <article class="case-study case-story" id="case-03" data-case-detail aria-labelledby="case-title-03">
-            <div class="case-story-heading">
-              <div class="case-copy">
-                <p class="eyebrow">Case 03 <span>/</span> Logistics platform</p>
-                <h3 id="case-title-03" tabindex="-1">They could absorb the outages. Customer trust was harder to replace.</h3>
-              </div>
-              <div class="case-story-context">
-                <p>Revenue doubled each year, but the system crashed roughly every two weeks.</p>
-                <p>Operations absorbed the disruption; reporting relied on manual extracts and Excel.</p>
-              </div>
-            </div>
-            <figure class="case-illustration">
-              <a class="case-artwork-link" href="./illustrations/case-03-story.svg?v=c7ec0d15c2a4" target="_blank" rel="noopener noreferrer" aria-label="Open the complete Case 03 illustration in a new tab">
-                <img src="./illustrations/case-03.svg?v=97be455042d0" width="1600" height="880" alt="A crane lifts a red container onto a growing stack. A breaking wave erodes the ground; the bottom-right container falls and the bottom-middle container starts detaching." loading="lazy" decoding="async" />
-              </a>
-              <figcaption>
-                <span>Growth continued above. Recurring outages were eroding the foundations below.</span>
-                <a href="./illustrations/case-03-story.svg?v=c7ec0d15c2a4" target="_blank" rel="noopener noreferrer" aria-label="View the full-size Case 03 story in a new tab">View full-size story <span aria-hidden="true">↗</span></a>
-              </figcaption>
-            </figure>
-            <div class="case-contribution">
-              <p class="eyebrow"><span class="signal-dash"></span> What our consultant helped change</p>
-              <div class="case-contribution-grid">
-                  <div>
-                    <h4>Plan focused services</h4>
-                    <p>Separate driver, customer, admin, fleet, and warehouse responsibilities.</p>
-                  </div>
-                  <div>
-                    <h4>Build the data platform</h4>
-                    <p>Data lake → warehouse → real-time analytics, separate from the operational system.</p>
-                  </div>
-                  <div>
-                    <h4>Replace manual reporting</h4>
-                    <p>Connect current operational data for accurate, timely business insight.</p>
-                  </div>
-              </div>
-            </div>
-            <div class="case-story-outcome">
-              <p class="eyebrow">What this enabled</p>
-              <h4>More dependable operations. Live business insight.</h4>
-              <p>Contain disruption, improve service, and support informed decisions as the business grows.</p>
-            </div>
-            <nav class="case-story-navigation" aria-label="Case study navigation">
-              <a href="#work">Back to the case studies <span aria-hidden="true">↑</span></a>
-              <a href="#case-01">Next: Lending platform <span aria-hidden="true">→</span></a>
-            </nav>
-          </article>
         </div>
       </section>
       <!-- Selected case studies: end -->
 
-      <section class="capabilities section-shell" id="services" aria-labelledby="capabilities-heading">
+      <div class="services-list section-shell page-section" aria-label="Focused engagement">
+        <section class="service-entry" aria-labelledby="assessment-heading">
+          <div class="service-index">
+            <p class="eyebrow"><span class="signal-dash"></span>02 / Focused engagement</p>
+            <p>4–8 weeks</p>
+          </div>
+          <div class="service-detail">
+            <h2 id="assessment-heading">A plan your team can actually carry.</h2>
+            <p class="service-summary">
+              We spend 4–8 weeks, depending on complexity, getting close to your systems and the
+              people who run them. We look at the data, AI use, architecture, and delivery constraints,
+              then work out what to tackle first.
+            </p>
+            <div class="service-points service-points-focused">
+              <div>
+                <h3>Understand the situation</h3>
+                <p>Learn how the systems work, where the pressure is, and what your team already has on its plate.</p>
+              </div>
+              <div>
+                <h3>Make the next steps realistic</h3>
+                <p>Set priorities and technical direction around your team’s actual capacity.</p>
+              </div>
+              <div>
+                <h3>Keep the engagement focused</h3>
+                <p>Have the goal firmly in sight from the start, with a clear timeframe.</p>
+              </div>
+            </div>
+            <p class="service-endnote">You leave with clear priorities and advice tailored to the systems and people you have.</p>
+          </div>
+        </section>
+      </div>
+
+      <section class="capabilities section-shell page-section" id="services" aria-labelledby="capabilities-heading">
         <div class="section-marker">
-          <span class="eyebrow"><span class="signal-dash"></span>02 / What we do</span>
+          <span class="eyebrow" id="capabilities-heading"><span class="signal-dash"></span>03 / What we do</span>
         </div>
-        <h2 id="capabilities-heading">From the data to the team behind it.</h2>
         <div class="capability-list">
           <div class="capability-row">
-            <span class="capability-index">01 / Data and insight</span>
-            <h3>Make the data worth trusting.</h3>
-            <p>We build reliable data foundations and make the path from source to insight clear, so people know what an answer is based on.</p>
-          </div>
-          <div class="capability-row">
-            <span class="capability-index">02 / AI use and review</span>
+            <span class="capability-index">01 / AI use and review</span>
             <h3>Use AI without losing control.</h3>
             <p>We help your team decide where AI can help, how to check what it creates, and which decisions need a person to own them.</p>
           </div>
           <div class="capability-row">
-            <span class="capability-index">03 / Technical architecture</span>
+            <span class="capability-index">02 / Technical architecture</span>
             <h3>Make technical choices that last.</h3>
             <p>We work through the tradeoffs with your team and put sound engineering practices in place before a shortcut becomes the system.</p>
           </div>
           <div class="capability-row">
-            <span class="capability-index">04 / Team building in Vietnam</span>
+            <span class="capability-index">03 / Data and insight</span>
+            <h3>Make the data worth trusting.</h3>
+            <p>We build reliable data foundations and make the path from source to insight clear, so people know what an answer is based on.</p>
+          </div>
+          <div class="capability-row">
+            <span class="capability-index">04 / Team building</span>
             <h3>Build the team you actually need.</h3>
-            <p>We help define the roles, assess candidates, and develop an engineering team in Vietnam that can take the work forward.</p>
+            <p>We help define the roles, assess candidates, and develop an engineering team that can take the work forward.</p>
           </div>
           <div class="capability-row">
             <span class="capability-index">05 / Managed AI development</span>
@@ -317,95 +328,56 @@
         </div>
       </section>
 
-      <div class="services-list section-shell" aria-label="Ways to work with us">
-        <section class="service-entry" aria-labelledby="assessment-heading">
-          <div class="service-index">
-            <p class="eyebrow"><span class="signal-dash"></span>01 / Focused engagement</p>
-            <p>6–8 weeks</p>
-          </div>
-          <div class="service-detail">
-            <h2 id="assessment-heading">A plan your team can actually carry.</h2>
-            <p class="service-summary">
-              We spend 6–8 weeks, depending on complexity, getting close to your systems and the
-              people who run them. We look at the data, AI use, architecture, and delivery constraints,
-              then work out what to tackle first.
-            </p>
-            <div class="service-points">
-              <div>
-                <h3>Understand the situation</h3>
-                <p>Learn how the systems work, where the pressure is, and what your team already has on its plate.</p>
-              </div>
-              <div>
-                <h3>Make the next steps realistic</h3>
-                <p>Set priorities and technical direction around your team’s actual capacity.</p>
-              </div>
-            </div>
-            <p class="service-endnote">You leave with clear priorities and advice tailored to the systems and people you have.</p>
-          </div>
-        </section>
-
+      <div class="services-list section-shell page-section" aria-label="Putting the plan into practice">
         <section class="service-entry" aria-labelledby="delivery-heading">
           <div class="service-index">
-            <p class="eyebrow"><span class="signal-dash"></span>02 / Defined delivery engagement</p>
-            <p>Scope and end date agreed upfront</p>
+            <p class="eyebrow"><span class="signal-dash"></span>04 / Putting the plan into practice</p>
           </div>
           <div class="service-detail">
-            <h2 id="delivery-heading">Carry an agreed scope through to handover.</h2>
+            <h2 id="delivery-heading">Help your team carry it through.</h2>
             <p class="service-summary">
-              We agree the scope, milestones, and end date before delivery begins. We can lead a
-              development team with a Product Engineering Manager or help you hire and grow your
-              own team in Vietnam, with handover built into the engagement.
+              When your team needs help executing the playbook, we work alongside them to make
+              the critical changes, verify the results, and leave them ready to own the system.
             </p>
-            <div class="service-points">
-              <div>
-                <h3>Lead the work</h3>
-                <p>A Product Engineering Manager stays responsible for progress, quality, and handover.</p>
-              </div>
-              <div>
-                <h3>Build your own team</h3>
-                <p>We help hire, develop, and share knowledge with the people who will own the product.</p>
-              </div>
-            </div>
-            <p class="service-endnote">The engagement ends with an agreed handover. Your team owns the work and the knowledge to carry it forward.</p>
           </div>
         </section>
       </div>
 
-      <section class="approach section-shell" id="approach" aria-labelledby="approach-heading">
+      <section class="approach section-shell page-section" id="approach" aria-labelledby="approach-heading">
         <div class="section-marker">
-          <span class="eyebrow"><span class="signal-dash"></span>03 / How we work</span>
+          <span class="eyebrow"><span class="signal-dash"></span>05 / How we work</span>
         </div>
         <div class="section-heading">
           <h2 id="approach-heading">
-            Get close to the problem.<br /><span class="muted">Stay through the fix.</span>
+            Start with your business.<br /><span class="muted">Make the choices clear.</span>
           </h2>
-          <p>Your situation sets the priorities.<br />The solution is built around it.</p>
+          <p>Your goals guide the work.<br />Your team stays involved.</p>
         </div>
         <ol class="process">
           <li>
             <span class="step-number">01</span>
-            <h3>Find the fault.</h3>
-            <p>Trace the data, code, dependencies, and workarounds. Establish what’s actually broken.</p>
+            <h3>Start with your goal.</h3>
+            <p>Agree on what you want to achieve, what success looks like, and the constraints we need to work within.</p>
           </li>
           <li>
             <span class="step-number">02</span>
-            <h3>Stop the bleeding.</h3>
-            <p>Contain the immediate risk. Put the urgent operational problems first.</p>
+            <h3>Check the work.</h3>
+            <p>Review the systems, data, and AI-generated work against what the business needs. Establish what you can confidently build on.</p>
           </li>
           <li>
             <span class="step-number">03</span>
-            <h3>Make the foundation solid.</h3>
-            <p>Rebuild the model and boundaries. Migrate deliberately. Verify the result.</p>
+            <h3>Work through the tradeoffs.</h3>
+            <p>Explain the options, their costs, and their risks. Make recommendations your team can understand and act on.</p>
           </li>
           <li>
             <span class="step-number">04</span>
-            <h3>Leave you in control.</h3>
-            <p>Work alongside your people, share what we know, and help build the team that carries the work forward.</p>
+            <h3>Keep your team involved.</h3>
+            <p>Share the findings and reasoning as we go. Your team understands the decisions and has the knowledge to carry them forward.</p>
           </li>
         </ol>
       </section>
 
-      <section class="contact section-shell" id="contact" aria-labelledby="contact-heading">
+      <section class="contact section-shell page-section" id="contact" aria-labelledby="contact-heading">
         <div class="contact-copy">
           <p class="eyebrow">
             <span class="signal-dash"></span> Start with the situation you’re in
