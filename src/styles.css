@@ -2023,6 +2023,9 @@ html {
   .page-section {
     scroll-snap-align: start;
   }
+  .site-footer {
+    scroll-snap-align: end;
+  }
   .page-section .section-marker,
   .page-section .section-heading {
     margin-bottom: 32px;
