@@ -55,6 +55,7 @@ function initializeReadingProgress() {
 function initializePageLayout() {
   const root = document.documentElement;
   const header = document.querySelector('.site-header');
+  const locationBar = document.querySelector('.location-bar');
   const work = document.querySelector('#work');
   const browser = work?.querySelector('.case-browser');
   if (!header) return;
@@ -62,6 +63,9 @@ function initializePageLayout() {
 
   function update() {
     root.style.setProperty('--site-header-height', `${header.getBoundingClientRect().height}px`);
+    if (locationBar) {
+      root.style.setProperty('--location-bar-height', `${locationBar.getBoundingClientRect().height}px`);
+    }
     if (work && browser) {
       const bannerHeight = browser.getBoundingClientRect().top - work.getBoundingClientRect().top;
       root.style.setProperty('--case-banner-height', `${bannerHeight}px`);
@@ -77,7 +81,7 @@ function initializePageLayout() {
 
   if ('ResizeObserver' in window) {
     const observer = new ResizeObserver(schedule);
-    [header, work?.querySelector('.section-marker'), work?.querySelector('.case-introduction')]
+    [header, locationBar, work?.querySelector('.section-marker'), work?.querySelector('.case-introduction')]
       .filter(Boolean)
       .forEach((element) => observer.observe(element));
   }
